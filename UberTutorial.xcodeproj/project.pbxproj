@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		255840BE27A6B251008FC161 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255840BD27A6B251008FC161 /* AppDelegate.swift */; };
 		255840C027A6B251008FC161 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255840BF27A6B251008FC161 /* SceneDelegate.swift */; };
-		255840C227A6B251008FC161 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255840C127A6B251008FC161 /* ViewController.swift */; };
 		255840C527A6B251008FC161 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 255840C327A6B251008FC161 /* Main.storyboard */; };
 		255840C727A6B252008FC161 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 255840C627A6B252008FC161 /* Assets.xcassets */; };
 		255840CA27A6B252008FC161 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 255840C827A6B252008FC161 /* LaunchScreen.storyboard */; };
 		255840D527A6B252008FC161 /* UberTutorialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255840D427A6B252008FC161 /* UberTutorialTests.swift */; };
 		255840DF27A6B252008FC161 /* UberTutorialUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255840DE27A6B252008FC161 /* UberTutorialUITests.swift */; };
 		255840E127A6B252008FC161 /* UberTutorialUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255840E027A6B252008FC161 /* UberTutorialUITestsLaunchTests.swift */; };
+		255840F827A6EED4008FC161 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255840F727A6EED4008FC161 /* LoginController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +39,6 @@
 		255840BA27A6B251008FC161 /* UberTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UberTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		255840BD27A6B251008FC161 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		255840BF27A6B251008FC161 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		255840C127A6B251008FC161 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		255840C427A6B251008FC161 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		255840C627A6B252008FC161 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		255840C927A6B252008FC161 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +48,7 @@
 		255840DA27A6B252008FC161 /* UberTutorialUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UberTutorialUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		255840DE27A6B252008FC161 /* UberTutorialUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberTutorialUITests.swift; sourceTree = "<group>"; };
 		255840E027A6B252008FC161 /* UberTutorialUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberTutorialUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		255840F727A6EED4008FC161 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +99,13 @@
 		255840BC27A6B251008FC161 /* UberTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				255840F627A6ED05008FC161 /* Utils */,
+				255840F527A6ECF6008FC161 /* Services */,
+				255840F327A6ECB3008FC161 /* Modal */,
+				255840F227A6ECB1008FC161 /* View */,
+				255840F027A6ECAA008FC161 /* Controller */,
 				255840BD27A6B251008FC161 /* AppDelegate.swift */,
 				255840BF27A6B251008FC161 /* SceneDelegate.swift */,
-				255840C127A6B251008FC161 /* ViewController.swift */,
 				255840C327A6B251008FC161 /* Main.storyboard */,
 				255840C627A6B252008FC161 /* Assets.xcassets */,
 				255840C827A6B252008FC161 /* LaunchScreen.storyboard */,
@@ -125,6 +129,42 @@
 				255840E027A6B252008FC161 /* UberTutorialUITestsLaunchTests.swift */,
 			);
 			path = UberTutorialUITests;
+			sourceTree = "<group>";
+		};
+		255840F027A6ECAA008FC161 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				255840F727A6EED4008FC161 /* LoginController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		255840F227A6ECB1008FC161 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		255840F327A6ECB3008FC161 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
+		255840F527A6ECF6008FC161 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		255840F627A6ED05008FC161 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				255840C227A6B251008FC161 /* ViewController.swift in Sources */,
+				255840F827A6EED4008FC161 /* LoginController.swift in Sources */,
 				255840BE27A6B251008FC161 /* AppDelegate.swift in Sources */,
 				255840C027A6B251008FC161 /* SceneDelegate.swift in Sources */,
 			);
