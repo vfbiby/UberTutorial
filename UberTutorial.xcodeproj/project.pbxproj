@@ -16,6 +16,7 @@
 		255840DF27A6B252008FC161 /* UberTutorialUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255840DE27A6B252008FC161 /* UberTutorialUITests.swift */; };
 		255840E127A6B252008FC161 /* UberTutorialUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255840E027A6B252008FC161 /* UberTutorialUITestsLaunchTests.swift */; };
 		255840F827A6EED4008FC161 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255840F727A6EED4008FC161 /* LoginController.swift */; };
+		255840FA27A91030008FC161 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255840F927A91030008FC161 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		255840DE27A6B252008FC161 /* UberTutorialUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberTutorialUITests.swift; sourceTree = "<group>"; };
 		255840E027A6B252008FC161 /* UberTutorialUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberTutorialUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		255840F727A6EED4008FC161 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		255840F927A91030008FC161 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 		255840F627A6ED05008FC161 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				255840F927A91030008FC161 /* Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				255840F827A6EED4008FC161 /* LoginController.swift in Sources */,
 				255840BE27A6B251008FC161 /* AppDelegate.swift in Sources */,
 				255840C027A6B251008FC161 /* SceneDelegate.swift in Sources */,
+				255840FA27A91030008FC161 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
