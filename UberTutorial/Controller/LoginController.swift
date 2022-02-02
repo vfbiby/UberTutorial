@@ -70,12 +70,12 @@ class LoginController: UIViewController {
     // MARK: - Selectors
     
     @objc func handleShowSignUp(){
-        print("Attempting to push controller...")
         let controller = SignUpController()
         navigationController?.pushViewController(controller, animated: true)
     }
     
     // MARK: - Helper Functions
+    
     func configureUI(){
         configureNavigationBar()
         view.backgroundColor = .backgroundColor
