@@ -17,6 +17,7 @@
 		255840E127A6B252008FC161 /* UberTutorialUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255840E027A6B252008FC161 /* UberTutorialUITestsLaunchTests.swift */; };
 		255840F827A6EED4008FC161 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255840F727A6EED4008FC161 /* LoginController.swift */; };
 		255840FA27A91030008FC161 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255840F927A91030008FC161 /* Extensions.swift */; };
+		2582B1B527AAB41E009BD410 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2582B1B427AAB41E009BD410 /* SignUpController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		255840E027A6B252008FC161 /* UberTutorialUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberTutorialUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		255840F727A6EED4008FC161 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		255840F927A91030008FC161 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		2582B1B427AAB41E009BD410 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				255840F727A6EED4008FC161 /* LoginController.swift */,
+				2582B1B427AAB41E009BD410 /* SignUpController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2582B1B527AAB41E009BD410 /* SignUpController.swift in Sources */,
 				255840F827A6EED4008FC161 /* LoginController.swift in Sources */,
 				255840BE27A6B251008FC161 /* AppDelegate.swift in Sources */,
 				255840C027A6B251008FC161 /* SceneDelegate.swift in Sources */,
