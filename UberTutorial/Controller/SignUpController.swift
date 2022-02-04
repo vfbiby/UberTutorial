@@ -111,7 +111,7 @@ class SignUpController: UIViewController {
                 if let error = error {
                     print("DEBUG: Registered failed! \(error.localizedDescription)")
                 }else{
-                 print("Successfully registered user and saved data..")
+                    self.dismiss(animated: true, completion: nil)
                 }
             })
         }
