@@ -81,6 +81,9 @@ class LoginController: UIViewController {
                 print("DEBUG: Failed to log user in error \(error.localizedDescription).")
                 return
             }
+            
+            guard let controller = UIApplication.shared.keyWindow?.rootViewController as? HomeController else { return }
+            controller.configureUI()
             self.dismiss(animated: true, completion: nil)
         }
     }
