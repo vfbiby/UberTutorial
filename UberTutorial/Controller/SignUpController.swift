@@ -109,7 +109,7 @@ class SignUpController: UIViewController {
                            "accountType": accountTypeIndex] as [String : Any]
             Database.database(url: "https://ubertutorial-5d8ef-default-rtdb.asia-southeast1.firebasedatabase.app/").reference().child("users").child(uid).updateChildValues(values, withCompletionBlock: { (error, ref ) in
                 if let error = error {
-                    print("Registered failed! \(error)")
+                    print("DEBUG: Registered failed! \(error.localizedDescription)")
                 }else{
                  print("Successfully registered user and saved data..")
                 }
