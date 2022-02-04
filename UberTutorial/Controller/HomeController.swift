@@ -15,7 +15,7 @@ class HomeController: UIViewController {
     
     private let mapView = MKMapView()
     private let locationManager = CLLocationManager()
-    private let inputLocationView = LocationInputActivationView()
+    private let inputActivationView = LocationInputActivationView()
     
     // MARK: - Lifecycle
     
@@ -51,10 +51,16 @@ class HomeController: UIViewController {
     func configureUI(){
         configureMapView()
         
-        view.addSubview(inputLocationView)
-        inputLocationView.centerX(inView: view)
-        inputLocationView.setDimensions(height: 50, width: view.frame.width - 64)
-        inputLocationView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
+        view.addSubview(inputActivationView)
+        inputActivationView.centerX(inView: view)
+        inputActivationView.setDimensions(height: 50, width: view.frame.width - 64)
+        inputActivationView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
+        inputActivationView.alpha = 0
+        inputActivationView.delegate = self
+        
+        UIView.animate(withDuration: 2) {
+            self.inputActivationView.alpha = 1
+        }
     }
     
     func configureMapView(){
@@ -92,4 +98,11 @@ extension HomeController: CLLocationManagerDelegate {
         }
     }
     
+}
+
+extension HomeController: LocationInputActivationViewDelegate {
+    
+    func presentLocationInputView() {
+        print("DEBUG: Handle present location input view...")
+    }
 }
