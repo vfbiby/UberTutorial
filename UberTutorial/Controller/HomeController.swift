@@ -85,7 +85,7 @@ class HomeController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.locationInputView.alpha = 1
         } completion: { _ in
-            print("DEBUG: Present table view...")
+            self.tableView.frame.origin.y = self.locationInputViewHeight
         }
     }
     
@@ -97,7 +97,7 @@ class HomeController: UIViewController {
         tableView.rowHeight = 60
         
         let height = view.frame.height - locationInputViewHeight
-        tableView.frame = CGRect(x: 0.0, y: view.frame.height - 300, width: view.frame.width, height: height)
+        tableView.frame = CGRect(x: 0.0, y: view.frame.height, width: view.frame.width, height: height)
         view.addSubview(tableView)
     }
 }
@@ -145,8 +145,10 @@ extension HomeController: LocationInputActivationViewDelegate {
 
 extension HomeController: LocationInputViewDelegate {
     func dismissLocationInputView() {
+        locationInputView.removeFromSuperview()
         UIView.animate(withDuration: 0.3) {
             self.locationInputView.alpha = 0
+            self.tableView.frame.origin.y = self.view.frame.height
         } completion: { _ in
             UIView.animate(withDuration: 0.3) {
                 self.inputActivationView.alpha = 1
