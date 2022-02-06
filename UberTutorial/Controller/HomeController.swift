@@ -26,6 +26,7 @@ class HomeController: UIViewController {
     private var user: User? {
         didSet{ locationInputView.user = user}
     }
+    private var searchResults = [MKPlacemark]()
     
     // MARK: - Lifecycle
     
@@ -147,6 +148,27 @@ class HomeController: UIViewController {
     }
 }
 
+// MARK: - Map Help Function
+
+private extension HomeController {
+    func searchBy(naturalLanguage: String, completion: @escaping([MKPlacemark]) -> Void){
+        var results = [MKPlacemark]()
+        
+        let request = MKLocalSearch.Request()
+        request.region = mapView.region
+        request.naturalLanguageQuery = naturalLanguage
+        let search = MKLocalSearch(request: request)
+        
+        search.start { response, error in
+            guard let response = response else { return }
+            response.mapItems.forEach { item in
+                results.append(item.placemark)
+            }
+            completion(results)
+        }
+    }
+}
+
 extension HomeController: CLLocationManagerDelegate {
     func enableLocationService(){
         switch CLLocationManager.authorizationStatus(){
@@ -194,6 +216,13 @@ extension HomeController: LocationInputActivationViewDelegate {
 // MARK: - LocationInputViewDelegate
 
 extension HomeController: LocationInputViewDelegate {
+    func executeSearch(query: String) {
+        searchBy(naturalLanguage: query) { results in
+            self.searchResults = results
+            self.tableView.reloadData()
+        }
+    }
+    
     func dismissLocationInputView() {
         locationInputView.removeFromSuperview()
         UIView.animate(withDuration: 0.3) {
@@ -222,7 +251,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 2 : 5
+        return section == 0 ? 2 : searchResults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
