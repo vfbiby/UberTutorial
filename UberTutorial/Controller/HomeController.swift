@@ -33,8 +33,6 @@ class HomeController: UIViewController {
         super.viewDidLoad()
         checkIfUserIsLoginedInn()
         enableLocationService()
-        fetchUserData()
-        fetchDrivers()
     }
     
     // MARK: - API
@@ -75,7 +73,7 @@ class HomeController: UIViewController {
                 self.present(nav, animated: true, completion: nil)
             }
         } else {
-            configureUI()
+            configure()
         }
     }
     
@@ -91,6 +89,12 @@ class HomeController: UIViewController {
         }
     }
     // MARK: - Help Functions
+    
+    func configure(){
+        configureUI()
+        fetchUserData()
+        fetchDrivers()
+    }
     
     func configureUI(){
         configureMapView()
