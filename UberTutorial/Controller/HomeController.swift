@@ -11,6 +11,7 @@ import MapKit
 import GeoFire
 
 private let reuseIdentifier = "LocationCell"
+private let annotionIdentifier = "DriverAnnotion"
 
 class HomeController: UIViewController {
     
@@ -98,6 +99,7 @@ class HomeController: UIViewController {
     }
     
     func configureMapView(){
+        mapView.delegate = self
         view.addSubview(mapView)
         mapView.frame = view.frame
         mapView.showsUserLocation = true
@@ -148,6 +150,19 @@ extension HomeController: CLLocationManagerDelegate {
         @unknown default:
             break
         }
+    }
+}
+
+// MARK: - LocationInputActivationViewDelegate
+
+extension HomeController: MKMapViewDelegate{
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if let annotation = annotation as? DriverAnnotation {
+            let view = MKAnnotationView(annotation: annotation, reuseIdentifier: annotionIdentifier)
+            view.image = #imageLiteral(resourceName: "chevron-sign-to-right")
+            return view
+        }
+        return nil
     }
 }
 
