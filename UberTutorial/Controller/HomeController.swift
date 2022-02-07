@@ -43,6 +43,7 @@ class HomeController: UIViewController {
         button.addTarget(self, action: #selector(actionButtonPressed), for: .touchUpInside)
         return button
     }()
+    private let riderActionView = RiderActionView()
     
     // MARK: - Lifecycle
     
@@ -142,6 +143,7 @@ class HomeController: UIViewController {
     
     func configureUI(){
         configureMapView()
+        configRiderActionView()
         
         view.addSubview(actionButton)
         actionButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, paddingTop: 16, paddingLeft: 20, width: 30, height: 30)
@@ -178,6 +180,12 @@ class HomeController: UIViewController {
         } completion: { _ in
             self.tableView.frame.origin.y = self.locationInputViewHeight
         }
+    }
+    
+    func configRiderActionView(){
+        view.addSubview(riderActionView)
+        
+        riderActionView.frame = CGRect(x: 0.0, y: view.frame.height - 300, width: view.frame.width, height: 300)
     }
     
     func configureTableView(){
