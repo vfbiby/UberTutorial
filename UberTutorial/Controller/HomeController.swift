@@ -31,6 +31,7 @@ class HomeController: UIViewController {
     private let locationInputView = LocationInputView()
     private let tableView = UITableView()
     private final let locationInputViewHeight: CGFloat = 200
+    private final let riderActionViewHeight: CGFloat = 300
     private var searchResults = [MKPlacemark]()
     private var actionButtonConfig = ActionButtonConfiguration()
     private var route: MKRoute?
@@ -61,11 +62,12 @@ class HomeController: UIViewController {
             print("DEBUG: Handle show menu")
         case .dismissActionView:
             removeAnnotationAndOverlay()
+            mapView.showAnnotations(mapView.annotations, animated: true)
             UIView.animate(withDuration: 0.3) {
                 self.configureActionButton(config: .showMenu)
                 self.inputActivationView.alpha = 1
+                self.animateRiderActionView(shouldShow: false)
             }
-            mapView.showAnnotations(mapView.annotations, animated: true)
         }
     }
     
@@ -185,7 +187,7 @@ class HomeController: UIViewController {
     func configRiderActionView(){
         view.addSubview(riderActionView)
         
-        riderActionView.frame = CGRect(x: 0.0, y: view.frame.height - 300, width: view.frame.width, height: 300)
+        riderActionView.frame = CGRect(x: 0.0, y: view.frame.height, width: view.frame.width, height: riderActionViewHeight)
     }
     
     func configureTableView(){
@@ -207,6 +209,13 @@ class HomeController: UIViewController {
             self.tableView.frame.origin.y = self.view.frame.height
             self.locationInputView.removeFromSuperview()
         }, completion: completion)
+    }
+    
+    func animateRiderActionView(shouldShow : Bool){
+        let yOrign = shouldShow ? self.view.frame.height - self.riderActionViewHeight : self.view.frame.height
+        UIView.animate(withDuration: 0.3) {
+            self.riderActionView.frame.origin.y = yOrign
+        }
     }
 }
 
@@ -367,10 +376,10 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             annotation.coordinate = selectedPlacemark.coordinate
             self.mapView.addAnnotation(annotation)
             self.mapView.selectAnnotation(annotation, animated: true)
-            
             let annotations = self.mapView.annotations.filter({ !$0.isKind(of: DriverAnnotation.self)})
-            
             self.mapView.showAnnotations(annotations, animated: true)
+            
+            self.animateRiderActionView(shouldShow: true)
         }
     }
 }
