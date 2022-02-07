@@ -369,9 +369,9 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        configureActionButton(config: .dismissActionView)
-        
         let selectedPlacemark = searchResults[indexPath.row]
+        
+        configureActionButton(config: .dismissActionView)
         let destination = MKMapItem(placemark: selectedPlacemark)
         generatePolyline(toDestination: destination)
         
@@ -380,8 +380,10 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             annotation.coordinate = selectedPlacemark.coordinate
             self.mapView.addAnnotation(annotation)
             self.mapView.selectAnnotation(annotation, animated: true)
+            
             let annotations = self.mapView.annotations.filter({ !$0.isKind(of: DriverAnnotation.self)})
-            self.mapView.showAnnotations(annotations, animated: true)
+//            self.mapView.showAnnotations(annotations, animated: true)
+            self.mapView.zoomToFit(annotations: annotations)
             
             self.animateRiderActionView(shouldShow: true, destination: selectedPlacemark)
         }
