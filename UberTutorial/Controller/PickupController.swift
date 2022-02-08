@@ -53,6 +53,7 @@ class PickupController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        configureMapView()
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -72,6 +73,17 @@ class PickupController: UIViewController{
     // MARK: - API
     
     // MARK: - Helper Functions
+    
+    func configureMapView(){
+        let region = MKCoordinateRegion(center: trip.pickupCoordinates,
+                                        latitudinalMeters: 1000, longitudinalMeters: 1000)
+        mapView.setRegion(region, animated: false)
+        
+        let anno = MKPointAnnotation()
+        anno.coordinate = trip.pickupCoordinates
+        mapView.addAnnotation(anno)
+        mapView.selectAnnotation(anno, animated: true)
+    }
     
     func configureUI(){
         view.backgroundColor = .black
