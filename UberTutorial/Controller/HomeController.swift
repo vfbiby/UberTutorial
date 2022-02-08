@@ -44,7 +44,7 @@ class HomeController: UIViewController {
         button.addTarget(self, action: #selector(actionButtonPressed), for: .touchUpInside)
         return button
     }()
-    private let riderActionView = RiderActionView()
+    private let rideActionView = RideActionView()
     
     // MARK: - Lifecycle
     
@@ -145,7 +145,7 @@ class HomeController: UIViewController {
     
     func configureUI(){
         configureMapView()
-        configRiderActionView()
+        configRideActionView()
         
         view.addSubview(actionButton)
         actionButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, paddingTop: 16, paddingLeft: 20, width: 30, height: 30)
@@ -184,10 +184,11 @@ class HomeController: UIViewController {
         }
     }
     
-    func configRiderActionView(){
-        view.addSubview(riderActionView)
+    func configRideActionView(){
+        rideActionView.delegate = self
+        view.addSubview(rideActionView)
         
-        riderActionView.frame = CGRect(x: 0.0, y: view.frame.height, width: view.frame.width, height: riderActionViewHeight)
+        rideActionView.frame = CGRect(x: 0.0, y: view.frame.height, width: view.frame.width, height: riderActionViewHeight)
     }
     
     func configureTableView(){
@@ -215,10 +216,10 @@ class HomeController: UIViewController {
         let yOrign = shouldShow ? self.view.frame.height - self.riderActionViewHeight : self.view.frame.height
         if shouldShow {
             guard let destination = destination else { return }
-            riderActionView.destination = destination
+            rideActionView.destination = destination
         }
         UIView.animate(withDuration: 0.3) {
-            self.riderActionView.frame.origin.y = yOrign
+            self.rideActionView.frame.origin.y = yOrign
         }
     }
 }
@@ -386,6 +387,20 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             self.mapView.zoomToFit(annotations: annotations)
             
             self.animateRiderActionView(shouldShow: true, destination: selectedPlacemark)
+        }
+    }
+}
+
+extension HomeController: RideActionViewDelegate {
+    func uploadTrip(_ view: RideActionView) {
+        guard let pickupCoordinates = locationManager?.location?.coordinate else { return }
+        guard let destinationCoordinates = view.destination?.coordinate else { return }
+        Service.shared.uploadTrip(pickupCoordinates, destinationCoordinates) { err, ref in
+            if let error =  err {
+                print("DEBUG: Failed to upload trip with error \(error.localizedDescription)")
+                return
+            }
+            print("DEBUG: Did upload trip successfully.")
         }
     }
 }
