@@ -42,8 +42,13 @@ class HomeController: UIViewController {
                 fetchDrivers()
                 configureLocationInputActivationView()
             } else {
-                print("DEBUG: User is driver")
+                observeTrips()
             }
+        }
+    }
+    private var trip: Trip?{
+        didSet{
+            print("DEBUG: Show pickup passenger control...")
         }
     }
     private let actionButton: UIButton = {
@@ -107,6 +112,12 @@ class HomeController: UIViewController {
             if !isDriverVisible {
                 self.mapView.addAnnotation(annotation)
             }
+        }
+    }
+    
+    func observeTrips(){
+        Service.shared.observeTrips { trip in
+            self.trip = trip
         }
     }
     
