@@ -17,6 +17,7 @@
 		255840E127A6B252008FC161 /* UberTutorialUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255840E027A6B252008FC161 /* UberTutorialUITestsLaunchTests.swift */; };
 		255840F827A6EED4008FC161 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255840F727A6EED4008FC161 /* LoginController.swift */; };
 		255840FA27A91030008FC161 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255840F927A91030008FC161 /* Extensions.swift */; };
+		2571611827B230F300ABE09A /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2571611727B230F300ABE09A /* Trip.swift */; };
 		2582B1B527AAB41E009BD410 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2582B1B427AAB41E009BD410 /* SignUpController.swift */; };
 		2582B1B727AADA6C009BD410 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2582B1B627AADA6C009BD410 /* AuthButton.swift */; };
 		2582B1BC27AB96D7009BD410 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2582B1BB27AB96D7009BD410 /* GoogleService-Info.plist */; };
@@ -67,6 +68,7 @@
 		255840E027A6B252008FC161 /* UberTutorialUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberTutorialUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		255840F727A6EED4008FC161 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		255840F927A91030008FC161 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		2571611727B230F300ABE09A /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		2582B1B427AAB41E009BD410 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		2582B1B627AADA6C009BD410 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		2582B1BB27AB96D7009BD410 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -202,6 +204,7 @@
 			children = (
 				25F3CFD327AEDAA7000EF944 /* User.swift */,
 				25F3CFD727AF9384000EF944 /* DriverAnnotation.swift */,
+				2571611727B230F300ABE09A /* Trip.swift */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				2582B1B727AADA6C009BD410 /* AuthButton.swift in Sources */,
 				25BF2BD827ACE7A500E249DC /* HomeController.swift in Sources */,
 				25BF2BDC27AD8B8100E249DC /* LocationInputView.swift in Sources */,
+				2571611827B230F300ABE09A /* Trip.swift in Sources */,
 				25F3CFD827AF9384000EF944 /* DriverAnnotation.swift in Sources */,
 				255840F827A6EED4008FC161 /* LoginController.swift in Sources */,
 				259A07C827B14AA70016754A /* RideActionView.swift in Sources */,

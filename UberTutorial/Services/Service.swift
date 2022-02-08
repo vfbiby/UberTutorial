@@ -43,7 +43,9 @@ struct Service{
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let pickupArray = [pickupCoordinates.latitude, pickupCoordinates.longitude]
         let destinationArray = [destinationCoordinates.latitude, destinationCoordinates.longitude]
-        let values =  ["pickupCoordinates": pickupArray, "destinationCoordinates": destinationArray]
+        let values =  ["pickupCoordinates": pickupArray,
+                       "destinationCoordinates": destinationArray,
+                       "state": TripState.requested.rawValue] as [String : Any]
         REF_TRIP.child(uid).updateChildValues(values, withCompletionBlock: completion)
     }
 }
