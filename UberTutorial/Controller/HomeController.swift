@@ -31,7 +31,7 @@ class HomeController: UIViewController {
     private let locationInputView = LocationInputView()
     private let tableView = UITableView()
     private final let locationInputViewHeight: CGFloat = 200
-    private final let riderActionViewHeight: CGFloat = 300
+    private final let rideActionViewHeight: CGFloat = 300
     private var searchResults = [MKPlacemark]()
     private var actionButtonConfig = ActionButtonConfiguration()
     private var route: MKRoute?
@@ -232,7 +232,7 @@ class HomeController: UIViewController {
         rideActionView.delegate = self
         view.addSubview(rideActionView)
         
-        rideActionView.frame = CGRect(x: 0.0, y: view.frame.height, width: view.frame.width, height: riderActionViewHeight)
+        rideActionView.frame = CGRect(x: 0.0, y: view.frame.height, width: view.frame.width, height: rideActionViewHeight)
     }
     
     func configureTableView(){
@@ -256,14 +256,16 @@ class HomeController: UIViewController {
         }, completion: completion)
     }
     
-    func animateRiderActionView(shouldShow : Bool, destination: MKPlacemark? = nil){
-        let yOrign = shouldShow ? self.view.frame.height - self.riderActionViewHeight : self.view.frame.height
-        if shouldShow {
-            guard let destination = destination else { return }
-            rideActionView.destination = destination
-        }
+    func animateRiderActionView(shouldShow : Bool, destination: MKPlacemark? = nil, config: RideActionViewConfiguration? = nil){
+        let yOrign = shouldShow ? self.view.frame.height - self.rideActionViewHeight : self.view.frame.height
         UIView.animate(withDuration: 0.3) {
             self.rideActionView.frame.origin.y = yOrign
+        }
+        if shouldShow {
+            guard let config = config else { return }
+            rideActionView.configureUI(withConfig: config)
+            guard let destination = destination else { return }
+            rideActionView.destination = destination
         }
     }
 }
@@ -469,6 +471,8 @@ extension HomeController: PickupControllerDelegate {
         
         mapView.zoomToFit(annotations: mapView.annotations)
         
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) {
+            self.animateRiderActionView(shouldShow: true, config: .tripAccepted)
+        }
     }
 }

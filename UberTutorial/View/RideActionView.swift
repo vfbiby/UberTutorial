@@ -17,6 +17,7 @@ enum RideActionViewConfiguration{
     case tripAccepted
     case pickupPassenger
     case tripInProgress
+    case endTrip
     
     init() {
         self = .requestRide
@@ -63,7 +64,6 @@ class RideActionView: UIView {
     private let titleLable: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18)
-        label.text = "Test Address title"
         label.textAlignment = .center
         return label
     }()
@@ -72,7 +72,6 @@ class RideActionView: UIView {
         let label = UILabel()
         label.textColor = .lightGray
         label.font = UIFont.systemFont(ofSize: 16)
-        label.text = "123 M ST, NW Washington DC"
         label.textAlignment = .center
         return label
     }()
@@ -160,6 +159,19 @@ class RideActionView: UIView {
     // MARK: - Help Functions
     
     func configureUI(withConfig config: RideActionViewConfiguration){
-        
+        switch config {
+        case .requestRide:
+            break
+        case .tripAccepted:
+            titleLable.text = "En Route To Passenger"
+            buttonAction = .getDirections
+            actionButton.setTitle(buttonAction.description, for: .normal)
+        case .pickupPassenger:
+            break
+        case .tripInProgress:
+            break
+        case .endTrip:
+            break
+        }
     }
 }
