@@ -75,7 +75,6 @@ class HomeController: UIViewController {
         super.viewDidLoad()
         checkIfUserIsLoginedInn()
         enableLocationService()
-        signOut()
     }
     
     override func viewWillAppear(_ animated: Bool) {
