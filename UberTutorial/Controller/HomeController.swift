@@ -488,6 +488,10 @@ extension HomeController: PickupControllerDelegate {
         generatePolyline(toDestination: mapItem)
         
         mapView.zoomToFit(annotations: mapView.annotations)
+        Service.shared.observeTripCancelled(trip: trip) {
+            self.removeAnnotationAndOverlay()
+            self.animateRiderActionView(shouldShow: false)
+        }
         
         self.dismiss(animated: true) {
             Service.shared.fetchUserData(uid: trip.passengerUid) { passenger in
