@@ -81,12 +81,15 @@ class LoginController: UIViewController {
                 print("DEBUG: Failed to log user in error \(error.localizedDescription).")
                 return
             }
-            let keyWindow = UIApplication.shared.connectedScenes
-                    .filter({$0.activationState == .foregroundActive})
-                    .compactMap({$0 as? UIWindowScene})
-                    .first?.windows
-                    .filter({$0.isKeyWindow}).first
-            guard let controller = keyWindow?.rootViewController as? HomeController else { return }
+//            let keyWindow = UIApplication.shared.connectedScenes
+//                    .filter({$0.activationState == .foregroundActive})
+//                    .compactMap({$0 as? UIWindowScene})
+//                    .first?.windows
+//                    .filter({$0.isKeyWindow}).first
+            guard let controller = UIApplication.shared.connectedScenes
+                    .flatMap({ ($0 as? UIWindowScene)?.windows ?? [] })
+                    .first(where: { $0.isKeyWindow })?.rootViewController as? HomeController else { return }
+//            guard let controller = keyWindow?.rootViewController as? HomeController else { return }
 //            guard let controller = UIApplication.shared.keyWindow?.rootViewController as? HomeController else { return }
             controller.configure()
             self.dismiss(animated: true, completion: nil)

@@ -129,7 +129,12 @@ class SignUpController: UIViewController {
             if let error = error {
                 print("DEBUG: Registered failed! \(error.localizedDescription)")
             }else{
-                guard let controller = UIApplication.shared.keyWindow?.rootViewController as? HomeController else { return }
+                let keyWindow = UIApplication.shared.connectedScenes
+                    .filter({$0.activationState == .foregroundActive})
+                    .compactMap({$0 as? UIWindowScene})
+                    .first?.windows
+                    .filter({$0.isKeyWindow}).first
+                guard let controller = keyWindow?.rootViewController as? HomeController else { return }
                 controller.configure()
                 self.dismiss(animated: true, completion: nil)
             }
