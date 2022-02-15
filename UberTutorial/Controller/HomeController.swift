@@ -78,8 +78,7 @@ class HomeController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        guard let trip = trip else { return }
-        print("DEBUG: Trip state is \(trip.state)")
+//        guard let trip = trip else { return }
     }
     
     // MARK: - Selectors
@@ -285,8 +284,11 @@ private extension HomeController {
         var results = [MKPlacemark]()
         
         let request = MKLocalSearch.Request()
+        print("DEBUG: results is \(results.count)")
         request.region = mapView.region
         request.naturalLanguageQuery = naturalLanguage
+        print("DEBUG: Natural language is \(naturalLanguage)")
+        print("DEBUG: Mapview region is \(mapView.region)")
         let search = MKLocalSearch(request: request)
         
         search.start { response, error in
@@ -351,7 +353,8 @@ extension HomeController: CLLocationManagerDelegate {
     
     func enableLocationService(){
         locationManager?.delegate = self
-        switch CLLocationManager.authorizationStatus(){
+//        switch CLLocationManager.authorizationStatus(){
+        switch locationManager?.authorizationStatus{
         case .notDetermined:
             print("DEBUG: Not determined...")
             locationManager?.requestWhenInUseAuthorization()
@@ -364,6 +367,8 @@ extension HomeController: CLLocationManagerDelegate {
         case .authorizedWhenInUse:
             print("DEBUG: Auth when in use...")
             locationManager?.requestAlwaysAuthorization()
+        case .none:
+            break
         @unknown default:
             break
         }
@@ -416,6 +421,7 @@ extension HomeController: LocationInputActivationViewDelegate {
 extension HomeController: LocationInputViewDelegate {
     func executeSearch(query: String) {
         searchBy(naturalLanguage: query) { results in
+            print("DEBUG: Results after searching is \(results.count)")
             self.searchResults = results
             self.tableView.reloadData()
         }
