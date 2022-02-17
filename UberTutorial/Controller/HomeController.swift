@@ -284,11 +284,8 @@ private extension HomeController {
         var results = [MKPlacemark]()
         
         let request = MKLocalSearch.Request()
-        print("DEBUG: results is \(results.count)")
         request.region = mapView.region
         request.naturalLanguageQuery = naturalLanguage
-        print("DEBUG: Natural language is \(naturalLanguage)")
-        print("DEBUG: Mapview region is \(mapView.region)")
         let search = MKLocalSearch(request: request)
         
         search.start { response, error in
@@ -335,8 +332,10 @@ private extension HomeController {
     }
     
     func setCustomRegion(withCoordinates coordinates: CLLocationCoordinate2D){
-        let region = CLCircularRegion(center: coordinates, radius: 25, identifier: "pickup")
+        let region = CLCircularRegion(center: coordinates, radius: 100, identifier: "pickup")
         locationManager?.startMonitoring(for: region)
+        
+        print("DEBUG: Did set region \(region)")
     }
 }
 
@@ -421,7 +420,6 @@ extension HomeController: LocationInputActivationViewDelegate {
 extension HomeController: LocationInputViewDelegate {
     func executeSearch(query: String) {
         searchBy(naturalLanguage: query) { results in
-            print("DEBUG: Results after searching is \(results.count)")
             self.searchResults = results
             self.tableView.reloadData()
         }
