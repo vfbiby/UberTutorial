@@ -459,7 +459,7 @@ extension HomeController: LocationInputViewDelegate {
 extension HomeController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Test"
+        return section == 0 ? "Favorites" : "Locations"
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
