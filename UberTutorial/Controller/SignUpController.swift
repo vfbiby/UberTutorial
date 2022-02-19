@@ -125,7 +125,7 @@ class SignUpController: UIViewController {
     // MARK: - Helper Functions
     
     func uploadUserDataAndShowHomeController(uid: String, values: [String: Any]){
-        REF_USER.child(uid).updateChildValues(values, withCompletionBlock: { (error, ref ) in
+        REF_USERS.child(uid).updateChildValues(values, withCompletionBlock: { (error, ref ) in
             if let error = error {
                 print("DEBUG: Registered failed! \(error.localizedDescription)")
             }else{

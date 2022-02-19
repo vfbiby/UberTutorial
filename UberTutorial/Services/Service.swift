@@ -10,7 +10,7 @@ import CoreLocation
 import GeoFire
 
 private let DB_REF = Database.database(url: "https://ubertutorial-5d8ef-default-rtdb.asia-southeast1.firebasedatabase.app/").reference()
-let REF_USER = DB_REF.child("users")
+let REF_USERS = DB_REF.child("users")
 let REF_DRIVER_LOCATIONS = DB_REF.child("driver-locations")
 let REF_TRIPS = DB_REF.child("trips")
 
@@ -18,7 +18,7 @@ struct Service{
     static let shared = Service()
     
     func fetchUserData(uid: String, completion: @escaping(User) -> Void){
-        REF_USER.child(uid).observeSingleEvent(of: .value) { snapshot in
+        REF_USERS.child(uid).observeSingleEvent(of: .value) { snapshot in
             guard let dictionary = snapshot.value as? [String: Any] else { return }
             let uid = snapshot.key
             let user = User(uid: uid, dictionary: dictionary)

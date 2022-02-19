@@ -112,6 +112,9 @@ class HomeController: UIViewController {
                 
             case .accepted:
                 self.shouldPresentLoadingView(false)
+                self.removeAnnotationAndOverlay()
+                self.zoomForActiveTrip(withDriverUid: driverUid)
+                
                 Service.shared.fetchUserData(uid: driverUid) { driver in
                     self.animateRiderActionView(shouldShow: true, config: .tripAccepted, user: driver)
                 }
@@ -148,6 +151,7 @@ class HomeController: UIViewController {
                     guard let driverAnno = annotation as? DriverAnnotation else { return false }
                     if driverAnno.uid == driver.uid {
                         driverAnno.updateAnnotationPosition(withCoordinate: coordinate)
+                        self.zoomForActiveTrip(withDriverUid: driver.uid)
                         return true
                     }
                     return false
@@ -352,6 +356,24 @@ private extension HomeController {
         locationManager?.startMonitoring(for: region)
         
         print("DEBUG: Did set region \(region)")
+    }
+    
+    func zoomForActiveTrip(withDriverUid uid: String) {
+        var annotations = [MKAnnotation]()
+        
+        self.mapView.annotations.forEach { annotation in
+            if let anno = annotation as? DriverAnnotation {
+                if anno.uid == uid {
+                    annotations.append(anno)
+                }
+            }
+            
+            if let userAnno = annotation as? MKUserLocation {
+                annotations.append(userAnno)
+            }
+        }
+        
+        self.mapView.zoomToFit(annotations: annotations)
     }
 }
 
