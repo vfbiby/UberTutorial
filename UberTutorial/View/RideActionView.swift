@@ -220,8 +220,9 @@ class RideActionView: UIView {
             } else {
                 buttonAction = .getDirections
                 actionButton.setTitle(buttonAction.description, for: .normal)
-                titleLable.text = "En Route To Destination"
             }
+            titleLable.text = "En Route To Destination"
+            
         case .endTrip:
             guard let user = user else { return }
             if user.accountType == .driver {
@@ -231,6 +232,7 @@ class RideActionView: UIView {
                 buttonAction = .dropOff
                 actionButton.setTitle(buttonAction.description, for: .normal)
             }
+            titleLable.text = "Arrived at Destination"
         }
     }
 }
