@@ -68,7 +68,7 @@ class PickupController: UIViewController{
     // MARK: - Selectors
     
     @objc func handleAcceptTrip(){
-        Service.shared.acceptTrip(trip: trip) { err, ref in
+        DriverService.shared.acceptTrip(trip: trip) { err, ref in
 //            self.dismiss(animated: true, completion: nil)
             self.delegate?.didAcceptTrip(self.trip)
         }
